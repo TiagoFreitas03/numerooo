@@ -1,0 +1,28 @@
+/* background color classes */
+.bg-grey-900 {
+	background-color: var(--grey-900) !important;
+}
+
+.bg-black {
+	background-color: var(--black) !important;
+}
+
+.bg-red {
+	background-color: var(--red) !important;
+}
+
+.bg-orange {
+	background-color: var(--orange) !important;
+}
+
+.bg-green {
+	background-color: var(--green) !important;
+}
+
+.bg-blue {
+	background-color: var(--blue) !important;
+}
+
+.bg-purple {
+	background-color: var(--purple) !important;
+}
