@@ -24,6 +24,9 @@ export function Stats() {
 					</div>
 
 					<div className="modal-body pt-4 px-4">
+						<button className="btn bg-blue" onClick={() => window.location.reload()}>
+							Jogar novamente
+						</button>
 					</div>
 
 					<div className="modal-footer">
