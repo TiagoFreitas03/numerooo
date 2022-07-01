@@ -24,8 +24,8 @@ body {
 .alert-container {
 	z-index: 9999 !important;
 	top: 40px;
-  left: 50%;
-  transform: translate(-50%, 0);
+	left: 50%;
+	transform: translate(-50%, 0);
 }
 
 .alert {
