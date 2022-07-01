@@ -1,9 +1,25 @@
-import { IconButton } from "./IconButton"
+import { useEffect } from "react"
 
+import { IconButton } from "./IconButton"
 import { Help } from "./Help"
 import { Stats } from './Stats'
 
-export function GameBar() {
+interface IGameBarProps {
+	isGameOver: boolean
+}
+
+export function GameBar({ isGameOver }: IGameBarProps) {
+	useEffect(() => {
+		console.log(isGameOver)
+
+		if (isGameOver) {
+			const statsModalBtn = document.getElementById('btn-stats-modal')
+
+			if (statsModalBtn)
+				statsModalBtn.click()
+		}
+	}, [isGameOver])
+
 	return (
 		<>
 			<div className='row mt-1'>
@@ -12,12 +28,18 @@ export function GameBar() {
 
 					<h1 className='mt-1 fs-3 fw-bold'>Numerooo</h1>
 
-					<IconButton icon='chart-column' data-bs-toggle="modal" data-bs-target="#stats-modal" />
+					<IconButton
+						icon='chart-column'
+						data-bs-toggle="modal"
+						data-bs-target="#stats-modal"
+						id="btn-stats-modal"
+					/>
 				</div>
 			</div>
 
 			<div id='modals'>
 				<Help />
+
 				<Stats />
 			</div>
 		</>
