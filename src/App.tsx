@@ -9,6 +9,7 @@ import { Piece } from './components/Piece'
 
 import { useAlert } from './contexts/AlertContext'
 import { isNumber, isNumberValid, validateAttempt } from './utils/validations'
+import { saveMatch } from './utils/stats'
 import { IAttemptInfo } from './utils/interfaces'
 
 const ATTEMPTS = Array.from({ length: 6 }).map(() => Array.from({ length: 5 }).map(() => ''))
@@ -80,11 +81,13 @@ export function App() {
 					setGameOver(true)
 					showAlert({ color: 'blue', message: VICTORY_MESSAGES[currentRow] }, 5000)
 					setCurrentPos(-1)
-				} else if (currentRow === 5) {
+					saveMatch({ result: 'V', attempts: currentRow + 1 })
+				} else if (currentRow === 5) { // Errou
 					setGameOver(true)
 					showAlert({ color: 'red', message: `O número era: ${randomNumber}` }, 8000)
 					setCurrentPos(-1)
-				} else {
+					saveMatch({ result: 'D', attempts: 6 })
+				} else { // Continua
 					setCurrentRow(state => state + 1)
 					setCurrentPos(0)
 				}

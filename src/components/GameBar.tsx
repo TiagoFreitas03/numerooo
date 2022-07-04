@@ -1,16 +1,22 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 import { IconButton } from "./IconButton"
 import { Help } from "./Help"
 import { Stats } from './Stats'
+
+import { getLocalStats } from "../utils/stats"
+import { IStats } from "../utils/interfaces"
 
 interface IGameBarProps {
 	isGameOver: boolean
 }
 
 export function GameBar({ isGameOver }: IGameBarProps) {
+	const [stats, setStats] = useState<IStats>()
+
 	useEffect(() => {
-		console.log(isGameOver)
+		const localStats = getLocalStats()
+		setStats(localStats)
 
 		if (isGameOver) {
 			const statsModalBtn = document.getElementById('btn-stats-modal')
@@ -39,8 +45,7 @@ export function GameBar({ isGameOver }: IGameBarProps) {
 
 			<div id='modals'>
 				<Help />
-
-				<Stats />
+				<Stats data={stats} />
 			</div>
 		</>
 	)
